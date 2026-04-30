@@ -3,8 +3,9 @@ package database
 import (
 	"daily-tracker/models"
 	"log"
+	"os"
 
-	"gorm.io/driver/sqlite"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
@@ -12,7 +13,14 @@ var DB *gorm.DB
 
 func InitDatabase() {
 	var err error
-	DB, err = gorm.Open(sqlite.Open("daily_tracker.db"), &gorm.Config{})
+
+	// Get database URL from environment variable
+	databaseURL := os.Getenv("DATABASE_URL")
+	if databaseURL == "" {
+		log.Fatal("DATABASE_URL environment variable is not set")
+	}
+
+	DB, err = gorm.Open(postgres.Open(databaseURL), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to database:", err)
 	}
