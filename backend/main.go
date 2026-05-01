@@ -28,6 +28,8 @@ func main() {
 		"http://localhost:3000",
 		"http://localhost:5173",
 		"https://tracker-daily-eight.vercel.app",
+		"https://tracker-daily-fe-git-main-ritiks-projects-4af63d9e.vercel.app",
+		"https://*.vercel.app",
 	}
 	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
 	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept"}
