@@ -8,12 +8,12 @@
   ],
   "routes": [
     {
-      "src": "backend/api/(.*)",
-      "dest": "/api/index.go"
+      "src": "/api/(.*)",
+      "dest": "/backend/api/index.go"
     },
     {
-      "src": "backend/(.*)",
-      "dest": "backend/api/index.go"
+      "src": "/(.*)",
+      "dest": "/backend/api/index.go"
     }
   ],
   "env": {
