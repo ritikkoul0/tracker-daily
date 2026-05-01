@@ -2,14 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/api/index.go",
+      "src": "backend/main.go",
       "use": "@vercel/go"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/api/index.go"
+      "dest": "backend/main.go",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Origin, Content-Type, Accept, Authorization"
+      }
     }
   ]
 }
