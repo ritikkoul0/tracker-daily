@@ -31,17 +31,12 @@ func initRouter() {
 		router = gin.New()
 		router.Use(gin.Recovery())
 
-		// Configure CORS
+		// Configure CORS - Allow all origins for Vercel deployments
 		config := cors.DefaultConfig()
-		config.AllowOrigins = []string{
-			"http://localhost:3000",
-			"http://localhost:5173",
-			"https://tracker-daily-eight.vercel.app",
-			"https://*.vercel.app", // Allow all Vercel preview deployments
-		}
+		config.AllowAllOrigins = true
 		config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
 		config.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization"}
-		config.AllowCredentials = true
+		config.AllowCredentials = false // Must be false when AllowAllOrigins is true
 		router.Use(cors.New(config))
 
 		// API routes
