@@ -24,9 +24,14 @@ func main() {
 
 	// Configure CORS
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000", "http://localhost:5173"}
+	config.AllowOrigins = []string{
+		"http://localhost:3000",
+		"http://localhost:5173",
+		"https://tracker-daily-eight.vercel.app",
+	}
 	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
 	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept"}
+	config.AllowCredentials = true
 	router.Use(cors.New(config))
 
 	// API routes
